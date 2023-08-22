@@ -65,7 +65,7 @@
               <div class="publication-links">
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a href="resources/swim_paper.pdf"
+                  <a href="https://arxiv.org/pdf/2308.10901.pdf"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="fas fa-file-pdf"></i>
@@ -76,7 +76,7 @@
 
                 <!-- arXiv Link. -->
                 <span class="link-block">
-                  <a target="_blank" href=""
+                  <a target="_blank" href="https://arxiv.org/abs/2308.10901"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="ai ai-arxiv"></i>
@@ -116,8 +116,8 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <div align="center">
-        <video id="teaser" autoplay playsinline loop width="100%">
-          <source src="./resources/main_vid.mp4"
+        <video id="teaser" muted playsinline autoplay loop width="100%">
+          <source src="./resources/main_teaser.mp4"
                   type="video/mp4">
         </video>
 
@@ -187,7 +187,7 @@
                   <p style="font-size: 18px">
                   Our approach involves 3 steps - <br>
                   #1 : Pre-training a world model on human videos,<br>
-                  #2 : Finetuning the world model on task-agnostic robot data, and <br>
+                  #2 : Finetuning the world model on unsupervised robot data, and <br>
                   #3 : Using the finetuned model to plan to achieve goals
                   
                   </p>
@@ -321,7 +321,7 @@
               <div class="columns is-centered">
                 <div class="column is-full" style="text-align: center;">
                   <!-- <img src="resources/robot_paradigms.png" alt="Image description" width="95%"> -->
-                  <video class="center" playsinline autoplay loop muted src="./resources/hm-pretraining.mp4" width="100%"
+                  <video class="center" playsinline autoplay loop muted src="./resources/swim_affordance_actions.mp4" width="100%"
                            style="border-radius:10px; "></video>
                   <br>
                   <br>
@@ -329,9 +329,10 @@
                   <div class="column is-centered">
                     <div class="is-one-third">
                     <div class="is-vcentered interpolation-panel">
-                      <div class="content">
+                      <div class="content has-text-left">
                         <p style="font-size: 18px">
-                          We use an affordance space to get high-level actions for pretraining on human videos .
+                          We use a shared human-robot high level action space by leveraging affordances. These specify interaction points and post-contact trajectory, following our prior work. 
+                          Our action space is flexible enough to also support actions outside this shared space.
                           
                            </p>
                       </div>
@@ -352,7 +353,7 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-three-quarters">
-          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><bold> Step #2 - Finetuning on task-agnostic robot data </bold></h3>
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><bold> Step #2 - Finetuning on unsupervised robot data </bold></h3>
           
           <tr>
             <td>
@@ -367,9 +368,10 @@
                   <div class="column is-centered">
                     <div class="is-one-third">
                     <div class="is-vcentered interpolation-panel">
-                      <div class="content">
+                      <div class="content has-text-left">
                         <p style="font-size: 18px">
-                          The robot samples from the affordance space to collect task-agnostic data, which is used to finetune the world model
+                          The robot samples from the affordance space to collect data for finetuning the world model. 
+                          This data collection is unsupervised, since there is no task reward.
                           
                            </p>
                       </div>
@@ -406,10 +408,9 @@
                   <div class="column is-centered">
                     <div class="is-one-third">
                     <div class="is-vcentered interpolation-panel">
-                      <div class="content">
+                      <div class="content has-text-left" >
                         <p style="font-size: 18px">
-                          Given a goal image, we can now use the finetuned world model for planning to reach the goal.
-                          
+                          With the finetuned world model, we can solve tasks using planning. In our experiments we specify tasks using goal images.
                            </p>
                       </div>
                     </div>
@@ -423,6 +424,39 @@
       </div>
     </div>
   </section>
+
+  <section class="section" style="width: 100%; margin: 0 auto;">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 5px;"><strong>Effect of Pre-training</strong></h3>    
+          <div class="columns is-centered">
+            <div class="column is-three-quarters">
+              <!-- <img src="resources/vrb_method.png" alt="VRB Model" style="border: 1px solid rgb(93, 92, 92); border-radius:10px; width: 100%;">
+              <img src="resources/vrb_method.png" alt="VRB Model" style="border: 1px; border-radius:10px; width: 100%;">
+             -->
+             <img src="resources/results.png" alt="VRB Model" style="border: 1px; border-radius:10px; width: 100%;">
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="column is-three-quarters has-text-centered">
+              <div class="interpolation-panel">
+                <div class="content">
+                  <p style="font-size: 18px">
+                  Pre-training on human videos significantly improves performance, especially when using a world model jointly across multiple tasks, 
+                  where average task success increases from 20 to 80 percent.
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  
 
   <!-- <section class="section">
     <div class="container">
@@ -450,7 +484,7 @@
           </div>
           <br>
           <div class="columns is-centered">
-            <!-- <div class="column is-two-thirds"> -->
+            <div class="column is-two-thirds"> -->
               <!-- <div class="is-vcentered interpolation-panel">
                 <div class="content has-text-left">
                   <p style="font-size: 18px">
